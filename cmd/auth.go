@@ -27,6 +27,8 @@ var authCmd = &cobra.Command{
 			viper.Set("apiURL", apiURL)
 		}
 
+		viper.Set("token", "")
+
 		if err := viper.WriteConfig(); err != nil {
 			fmt.Println("Error writing config:", err)
 			return

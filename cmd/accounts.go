@@ -7,9 +7,8 @@ import (
 	"context"
 	"fmt"
 
-	goinvestec "github.com/pjlast/go-investec"
+	"github.com/pjlast/investec-cli/cli"
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 )
 
 // accountsCmd represents the accounts command
@@ -17,14 +16,9 @@ var accountsCmd = &cobra.Command{
 	Use:   "accounts",
 	Short: "Fetch a list of all accounts",
 	Run: func(cmd *cobra.Command, args []string) {
-		cli := goinvestec.NewClient(context.Background(),
-			viper.GetString("apiURL"),
-			viper.GetString("clientID"),
-			viper.GetString("secret"),
-			viper.GetString("apiKey"),
-		)
+		client := cli.NewClient()
 
-		accts, err := cli.GetAccounts(context.Background())
+		accts, err := client.GetAccounts(context.Background())
 		if err != nil {
 			fmt.Println("Error while fetching accounts:", err)
 		}

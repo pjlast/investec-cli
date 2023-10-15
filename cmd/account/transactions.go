@@ -4,9 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	goinvestec "github.com/pjlast/go-investec"
+	"github.com/pjlast/investec-cli/cli"
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 )
 
 var transactionsCmd = &cobra.Command{
@@ -18,14 +17,9 @@ var transactionsCmd = &cobra.Command{
 			return
 		}
 
-		cli := goinvestec.NewClient(context.Background(),
-			viper.GetString("apiURL"),
-			viper.GetString("clientID"),
-			viper.GetString("secret"),
-			viper.GetString("apiKey"),
-		)
+		client := cli.NewClient()
 
-		txs, err := cli.GetAccountTransactions(context.Background(), args[0])
+		txs, err := client.GetAccountTransactions(context.Background(), args[0])
 		if err != nil {
 			fmt.Println("Error while fetching accounts:", err)
 		}
