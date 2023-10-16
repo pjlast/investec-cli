@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"os"
 
@@ -35,10 +36,19 @@ var transferCmd = &cobra.Command{
 		})
 
 		if err != nil {
-			fmt.Println("Something went wrong:", err)
-		} else {
-			fmt.Println(fmt.Sprintf("%+v", resp))
+			fmt.Println("Error:", err)
+			os.Exit(1)
+			return
 		}
+
+		out, err := json.Marshal(resp)
+		if err != nil {
+			fmt.Println("Error:", err)
+			os.Exit(1)
+			return
+		}
+
+		fmt.Println(string(out))
 	},
 }
 

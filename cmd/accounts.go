@@ -5,7 +5,9 @@ package cmd
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
+	"os"
 
 	"github.com/pjlast/investec-cli/cli"
 	"github.com/spf13/cobra"
@@ -20,12 +22,19 @@ var accountsCmd = &cobra.Command{
 
 		accts, err := client.GetAccounts(context.Background())
 		if err != nil {
-			fmt.Println("Error while fetching accounts:", err)
+			fmt.Println("Error:", err)
+			os.Exit(1)
+			return
 		}
 
-		for _, acct := range accts {
-			fmt.Println(acct.ID, acct.Name, acct.Number)
+		out, err := json.Marshal(accts)
+		if err != nil {
+			fmt.Println("Error:", err)
+			os.Exit(1)
+			return
 		}
+
+		fmt.Println(string(out))
 	},
 }
 

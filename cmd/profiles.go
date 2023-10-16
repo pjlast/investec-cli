@@ -5,7 +5,9 @@ package cmd
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
+	"os"
 
 	"github.com/pjlast/investec-cli/cli"
 	"github.com/spf13/cobra"
@@ -20,12 +22,19 @@ var profilesCmd = &cobra.Command{
 
 		profiles, err := client.GetProfiles(context.Background())
 		if err != nil {
-			fmt.Println("Error while fetching accounts:", err)
+			fmt.Println("Error:", err)
+			os.Exit(1)
+			return
 		}
 
-		for _, p := range profiles {
-			fmt.Println(p.ID, p.Name, p.Default)
+		out, err := json.Marshal(profiles)
+		if err != nil {
+			fmt.Println("Error:", err)
+			os.Exit(1)
+			return
 		}
+
+		fmt.Println(string(out))
 	},
 }
 
