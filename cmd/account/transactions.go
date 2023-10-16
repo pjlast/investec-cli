@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 
+	goinvestec "github.com/pjlast/go-investec"
 	"github.com/pjlast/investec-cli/cli"
 	"github.com/spf13/cobra"
 )
@@ -19,7 +20,7 @@ var transactionsCmd = &cobra.Command{
 
 		client := cli.NewClient()
 
-		txs, err := client.GetAccountTransactions(context.Background(), args[0])
+		txs, err := client.GetAccountTransactions(context.Background(), args[0], goinvestec.GetTransactionsOpts{})
 		if err != nil {
 			fmt.Println("Error while fetching accounts:", err)
 		}

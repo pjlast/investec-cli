@@ -3,7 +3,6 @@ module github.com/pjlast/investec-cli
 go 1.21.2
 
 require (
-	github.com/pjlast/go-investec v0.0.0-20231014194829-a1d959ca50e7
 	github.com/spf13/cobra v1.7.0
 	github.com/spf13/viper v1.17.0
 )
@@ -16,6 +15,7 @@ require (
 	github.com/magiconair/properties v1.8.7 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/pelletier/go-toml/v2 v2.1.0 // indirect
+	github.com/pjlast/go-investec v0.0.0-20231016185044-681ea5afc026 // indirect
 	github.com/sagikazarmark/locafero v0.3.0 // indirect
 	github.com/sagikazarmark/slog-shim v0.1.0 // indirect
 	github.com/sourcegraph/conc v0.3.0 // indirect

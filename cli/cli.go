@@ -1,7 +1,6 @@
 package cli
 
 import (
-	"context"
 	"encoding/json"
 	"fmt"
 	"net/http"
@@ -36,7 +35,7 @@ func NewClient() *goinvestec.Client {
 		},
 	}
 
-	return goinvestec.NewClient(context.Background(),
+	return goinvestec.NewClient(
 		viper.GetString("apiURL"),
 		auther,
 	)
