@@ -11,15 +11,16 @@ First, you'll need some Investec programmable banking credentials. You can eithe
 Next, you'll need to create a `investec-cli.yaml` file in your `$HOME` directory:
 
 ```yaml
-apikey: eUF4elFSRlg5N3ZPY3lRQXdsdUVVNkg2ZVB4TUE1ZVk6YVc1MlpYTjBaV010ZW1FdGNHSXRZV05qYjNWdWRITXRjMkZ1WkdKdmVBPT0=
-apiurl: https://openapisandbox.investec.com
-clientid: yAxzQRFX97vOcyQAwluEU6H6ePxMA5eY
-secret: 4dY0PjEYqoBrZ99r
+apikey: <api key>
+clientid: <client id>
+secret: <secret>
 ```
 
-If you would like to connect to your actual Investec account, substitute the sandbox credentials for your actual credentials, and change the `apiurl` to `http//openapi.investec.com`.
+If you would like to test against the sandbox environment, set `useSandbox` to `true`:
 
-This file is also used to cache the active OAuth token, which is valid for 30 minutes and will be refreshed automatically if it expires. If you update any of the credentials, be sure to remove the `token:` entry from the file so that the CLI can refresh the token.
+```yaml
+useSandbox: true
+```
 
 ## Usage
 
